@@ -35,11 +35,16 @@ export default function App(){
 
 
   function handleClick(){
+    if(tenzies){
+      setTenzies(false)
+      setRandomArray(allNewDice())
+    } 
+      
     setRandomArray(prevArray => {
-      const newArray = prevArray.map(obj => {
+      return prevArray.map(obj => {
         return !obj.isHeld ? {...obj, value: Math.floor(Math.random() * 6) + 1, isHeld: false, id: nanoid()} : obj
-      })
-      return newArray
+    })
+      
     })
   }
 
